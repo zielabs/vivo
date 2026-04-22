@@ -1,0 +1,587 @@
+/* ── Page Shell ──────────────────────────────── */
+.page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Sticky Top Bar ──────────────────────────── */
+.stickyBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stickyInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.backLink {
+  color: var(--accent, #2997ff);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.backLink:hover {
+  opacity: 0.7;
+}
+
+.stickyPrice {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #86868b);
+  flex-wrap: wrap;
+}
+
+.stickyPrice strong {
+  color: #fff;
+}
+
+.buyNowBtn {
+  background: var(--accent, #2997ff);
+  color: #fff;
+  border: none;
+  border-radius: 980px;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.buyNowBtn:hover {
+  background: #1a7fd4;
+  transform: scale(1.03);
+}
+
+/* ── Main Two-Column Layout ──────────────────── */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ── Gallery Column ──────────────────────────── */
+.galleryCol {
+  position: sticky;
+  top: 80px;
+}
+
+.mainImgWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #111;
+}
+
+.mainImg {
+  object-fit: cover;
+}
+
+.mainImgNative {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbRow {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.thumbBtn {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: #111;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.thumbActive {
+  border-color: var(--accent, #2997ff);
+}
+
+.thumbImg {
+  object-fit: cover;
+}
+
+.thumbImgNative {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Config Column ───────────────────────────── */
+.configCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.productHeader {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.productName {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.productMeta {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #86868b);
+  margin-top: 0.3rem;
+}
+
+.ratingRow {
+  margin-top: 0.5rem;
+  color: #f5a623;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ratingCount {
+  color: var(--accent, #2997ff);
+  font-size: 0.82rem;
+}
+
+/* ── Option Groups ───────────────────────────── */
+.optionGroup {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.optionLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.optionSelected {
+  color: var(--text-secondary, #86868b);
+  font-weight: 400;
+}
+
+.optionSub {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #86868b);
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.highlight {
+  color: var(--accent, #2997ff);
+}
+
+/* Color Swatches */
+.colorRow {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.colorSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.colorSwatch:hover {
+  transform: scale(1.1);
+}
+
+.colorActive {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* Storage Buttons */
+.storageRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.storageBtn {
+  flex: 1 1 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  gap: 0.2rem;
+}
+
+.storageBtn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.storageActive {
+  border-color: var(--accent, #2997ff);
+  background: rgba(41, 151, 255, 0.1);
+}
+
+.storageLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.storagePrice {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #86868b);
+}
+
+/* Trade-In */
+.tradeRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tradeBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.tradeBtn:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.tradeActive {
+  border-color: var(--accent, #2997ff);
+  background: rgba(41, 151, 255, 0.08);
+}
+
+.tradeSave {
+  font-size: 0.78rem;
+  color: #34c759;
+}
+
+/* Protection */
+.protectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.protectionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.protectionItem:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.protectionActive {
+  border-color: var(--accent, #2997ff);
+  background: rgba(41, 151, 255, 0.08);
+}
+
+.protectionPrice {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #86868b);
+}
+
+/* Promo Bullets */
+.promoBullets {
+  list-style: none;
+  padding: 1.2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.promoBullets li {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #86868b);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.promoBullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent, #2997ff);
+}
+
+.detailLink {
+  color: var(--accent, #2997ff);
+  font-size: inherit;
+  transition: opacity 0.2s;
+}
+
+.detailLink:hover {
+  opacity: 0.7;
+}
+
+/* ── Summary Card ────────────────────────────── */
+.summaryCard {
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summaryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.summaryProduct {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.summaryMeta {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #86868b);
+}
+
+/* Pay Toggle */
+.payToggle {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.payToggleBtn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  color: var(--text-secondary, #86868b);
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.payToggleActive {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.summaryPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.summaryPriceMain {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.summaryPriceSub {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #86868b);
+}
+
+.summaryBuyBtn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--accent, #2997ff);
+  color: #fff;
+  border: none;
+  border-radius: 980px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.summaryBuyBtn:hover {
+  background: #1a7fd4;
+  transform: scale(1.02);
+}
+
+.paymentIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.payIcon {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #888);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ── Benefits Section ────────────────────────── */
+.benefitsSection {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 5rem 2rem;
+}
+
+.benefitsTitle {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.benefitsGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.benefitCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.25s, transform 0.2s;
+}
+
+.benefitCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+}
+
+.benefitIcon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(41, 151, 255, 0.1);
+  border-radius: 10px;
+  color: var(--accent, #2997ff);
+}
+
+.benefitName {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.benefitDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #86868b);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.benefitLink {
+  color: var(--accent, #2997ff);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.benefitLink:hover {
+  opacity: 0.7;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .galleryCol {
+    position: static;
+  }
+
+  .stickyPrice {
+    font-size: 0.78rem;
+  }
+
+  .buyNowBtn {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+  }
+}

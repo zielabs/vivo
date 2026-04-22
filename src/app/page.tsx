@@ -1,66 +1,42 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import FeatureSection from "@/components/FeatureSection";
+import VideoFeature from "@/components/VideoFeature";
+import Showcase from "@/components/Showcase";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      <Navbar />
+      <Hero />
+      
+      <FeatureSection 
+        id="camera"
+        tag="ZEISS Optics"
+        title="Master the Light."
+        description="Equipped with the revolutionary ZEISS APO floating telephoto lens, ensuring breathtaking clarity and professional-grade portraits day or night."
+        imageSrc="/fitur1.png"
+        imageAlt="vivo X300 Pro Master the Light"
+        imageStyle={{ objectPosition: "center top", transform: "scale(1.15)", transformOrigin: "top center" }}
+      />
+
+      <FeatureSection 
+        id="design"
+        tag="Design"
+        title="Elegance in Every Curve."
+        description="A masterpiece of craftsmanship. The ultra-sleek metallic frame combined with a premium frosted glass back creates a perfect balance of aesthetics and ergonomics."
+        imageSrc="/fitur2.jpg"
+        imageAlt="vivo X300 Pro Elegance"
+        reverse={true}
+        imageStyle={{ objectPosition: "center bottom" }}
+      />
+
+      <VideoFeature />
+
+      <Showcase />
+
+      <Footer />
+    </main>
   );
 }

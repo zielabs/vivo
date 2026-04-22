@@ -1,0 +1,653 @@
+/* ── Backdrop ─────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+}
+
+/* ── Centering wrapper ───────────────────────── */
+.modalWrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 201;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+/* ── Modal ───────────────────────────────────── */
+.modal {
+  pointer-events: all;
+  width: min(680px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+/* ── Header ──────────────────────────────── */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.modalStep {
+  font-size: 0.75rem;
+  color: var(--accent, #2997ff);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.2rem;
+}
+
+.modalTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.closeBtn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Progress bar */
+.progressBar {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.progressDot {
+  flex: 1;
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.12);
+  transition: background 0.4s;
+}
+
+.progressDotActive {
+  background: var(--accent, #2997ff);
+}
+
+/* ── Order Summary Row ───────────────────── */
+.orderSummaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.orderProduct {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.orderMeta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.15rem;
+}
+
+.orderPriceCol {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.orderPriceFull {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.orderPriceMonthly {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.15rem;
+}
+
+/* ── Step body ───────────────────────────── */
+.stepBody {
+  min-height: 200px;
+}
+
+/* ── Form ─────────────────────────────────  */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fieldLabel {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #aaa;
+}
+
+.fieldError {
+  font-size: 0.75rem;
+  color: #ff4d4d;
+}
+
+.input {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: var(--accent, #2997ff);
+}
+
+.inputError {
+  border-color: #ff4d4d !important;
+}
+
+.textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.textarea:focus {
+  border-color: var(--accent, #2997ff);
+}
+
+/* ── Method List ─────────────────────────── */
+.methodList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.payToggle {
+  display: flex;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.payToggleBtn {
+  flex: 1;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.payToggleActive {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+}
+
+.infoBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: rgba(41, 151, 255, 0.1);
+  border: 1px solid rgba(41, 151, 255, 0.2);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: var(--accent, #2997ff);
+}
+
+.methodCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  text-align: left;
+  width: 100%;
+  color: #fff;
+}
+
+.methodCard:hover {
+  border-color: rgba(255,255,255,0.25);
+}
+
+.methodActive {
+  border-color: var(--accent, #2997ff);
+  background: rgba(41, 151, 255, 0.07);
+}
+
+.methodIcon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent, #2997ff);
+}
+
+.methodText {
+  flex: 1;
+}
+
+.methodLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.methodSub {
+  font-size: 0.78rem;
+  color: #888;
+  margin-top: 0.15rem;
+}
+
+.radioCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.radioActive {
+  border-color: var(--accent, #2997ff);
+}
+
+.radioActive::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--accent, #2997ff);
+}
+
+/* ── Card Form ───────────────────────────── */
+.cardForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cardPreview {
+  background: linear-gradient(135deg, #1a2a4a, #0d1b2e);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.cardPreview::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(41,151,255,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.cardChip {
+  margin-bottom: 1.5rem;
+}
+
+.cardNumber {
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: #e0e8ff;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #aabbd4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Transfer ────────────────────────────── */
+.transferWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bankTabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bankTab {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.bankTabActive {
+  border-color: var(--accent, #2997ff);
+  color: var(--accent, #2997ff);
+  background: rgba(41,151,255,0.08);
+}
+
+.transferCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.transferLabel {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.transferNoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transferNo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.copyBtn {
+  background: var(--accent, #2997ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.copyBtn:hover {
+  background: #1a7fd4;
+}
+
+.transferName {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.transferTotal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.9rem;
+}
+
+.transferNote {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* ── QRIS ────────────────────────────────── */
+.qrisWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.qrisBox {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  display: inline-flex;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+.qrSvg {
+  display: block;
+}
+
+.qrisAmount {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.qrisSub {
+  font-size: 0.82rem;
+  color: #888;
+  text-align: center;
+  max-width: 300px;
+}
+
+.qrisTimer {
+  font-size: 0.82rem;
+  color: #f5a623;
+}
+
+/* ── Success ─────────────────────────────── */
+.successWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.successIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #34c759, #2eaf4f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(52, 199, 89, 0.35);
+}
+
+.successTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.successSub {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.successDetail {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.successRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  gap: 1rem;
+}
+
+.successRow span:first-child {
+  color: #888;
+}
+
+.successEmail {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+.successBtn {
+  background: var(--accent, #2997ff);
+  color: #fff;
+  border: none;
+  border-radius: 980px;
+  padding: 0.85rem 2.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+
+.successBtn:hover {
+  background: #1a7fd4;
+  transform: scale(1.03);
+}
+
+/* ── Footer ──────────────────────────────── */
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.btnBack {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 980px;
+  padding: 0.7rem 1.4rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btnBack:hover {
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+
+.btnNext {
+  background: var(--accent, #2997ff);
+  border: none;
+  border-radius: 980px;
+  padding: 0.7rem 1.8rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, opacity 0.2s;
+}
+
+.btnNext:hover:not(:disabled) {
+  background: #1a7fd4;
+  transform: scale(1.02);
+}
+
+.btnNext:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width: 600px) {
+  .modalWrapper {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    padding: 1.5rem;
+    border-radius: 20px 20px 0 0;
+    max-height: 85vh;
+    width: 100%;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
